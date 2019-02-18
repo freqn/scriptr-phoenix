@@ -1,0 +1,17 @@
+<h1><%= @pharmacy.name %></h1>
+
+<ul>
+
+  <li>
+    <strong>Username:</strong>
+    <%= @pharmacy.username %>
+  </li>
+
+  <li>
+      <%= link "Change Password", to: Routes.pharmacy_path(@conn, :edit, @pharmacy) %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.pharmacy_path(@conn, :edit, @pharmacy) %></span> |
+<span><%= link "Back", to: Routes.pharmacy_path(@conn, :index) %></span>

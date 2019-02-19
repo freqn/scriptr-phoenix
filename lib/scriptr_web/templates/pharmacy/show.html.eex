@@ -15,6 +15,7 @@
 <hr>
 <h3>Locations:</h3>
 <%= link "+ Add Location", to: Routes.location_path(@conn, :new) %> <br><br>
+
 <ul>
 <%= for location <- @pharmacy.locations do %>
   <li class="location"><strong><%= link location.name, to: Routes.location_path(@conn, :show, location) %></strong></li>

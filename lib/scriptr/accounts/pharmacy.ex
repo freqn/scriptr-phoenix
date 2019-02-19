@@ -9,6 +9,7 @@ defmodule Scriptr.Accounts.Pharmacy do
     field :name, :string
     field :username, :string
     has_many :locations, Scriptr.Accounts.Location
+    has_many :patients, Scriptr.Accounts.Patient
     timestamps()
   end
 

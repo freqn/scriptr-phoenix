@@ -8,6 +8,7 @@ defmodule Scriptr.Accounts.Location do
     field :latitude, :string
     field :longitude, :string
     belongs_to :pharmacy, Scriptr.Accounts.Pharmacy
+    has_many :orders, Scriptr.Accounts.Order
     timestamps()
   end
 

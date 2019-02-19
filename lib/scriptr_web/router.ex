@@ -18,6 +18,10 @@ defmodule ScriptrWeb.Router do
 
     resources "/pharmacies", PharmacyController
     resources "/locations", LocationController
+    resources "/patients", PatientController
+    resources "/prescriptions", PrescriptionController
+    resources "/orders", OrderController
+
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete

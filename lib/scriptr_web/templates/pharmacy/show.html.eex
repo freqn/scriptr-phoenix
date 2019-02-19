@@ -1,6 +1,6 @@
 <h1><%= @pharmacy.name %></h1>
 
-<ul>
+<!-- <ul>
 
   <li>
     <strong>Username:</strong>
@@ -11,7 +11,15 @@
       <%= link "Change Password", to: Routes.pharmacy_path(@conn, :edit, @pharmacy) %>
   </li>
 
+</ul>-->
+<hr>
+<h3>Locations:</h3>
+<%= link "+ Add Location", to: Routes.location_path(@conn, :new) %> <br><br>
+<ul>
+<%= for location <- @pharmacy.locations do %>
+  <li class="location"><strong><%= link location.name, to: Routes.location_path(@conn, :show, location) %></strong></li>
+<% end %>
 </ul>
+<hr>
 
-<span><%= link "Edit", to: Routes.pharmacy_path(@conn, :edit, @pharmacy) %></span> |
-<span><%= link "Back", to: Routes.pharmacy_path(@conn, :index) %></span>
+<span><%= link "Edit Account", to: Routes.pharmacy_path(@conn, :edit, @pharmacy) %></span>

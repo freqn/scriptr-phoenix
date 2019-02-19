@@ -1,0 +1,17 @@
+<h1><%= @location.name %> Location</h1>
+
+<ul>
+  <li>
+    <strong>Latitude:</strong>
+    <%= @location.latitude %>
+  </li>
+
+  <li>
+    <strong>Longitude:</strong>
+    <%= @location.longitude %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.location_path(@conn, :edit, @location) %></span>
+<span><%= link "Back", to: Routes.pharmacy_path(@conn, :show, @location.pharmacy_id) %></span>

@@ -17,11 +17,12 @@ defmodule ScriptrWeb.Router do
     pipe_through :browser
 
     resources "/pharmacies", PharmacyController
+    resources "/locations", LocationController
     get "/sign-in", SessionController, :new
     post "/sign-in", SessionController, :create
     delete "/sign-out", SessionController, :delete
 
-    get "/", PageController, :index
+    get "/", SessionController, :new
   end
 
   # Other scopes may use custom stacks.

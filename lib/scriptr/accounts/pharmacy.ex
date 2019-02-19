@@ -8,7 +8,7 @@ defmodule Scriptr.Accounts.Pharmacy do
     field :encrypted_password, :string
     field :name, :string
     field :username, :string
-
+    has_many :locations, Scriptr.Accounts.Location
     timestamps()
   end
 

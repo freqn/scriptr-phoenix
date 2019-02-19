@@ -25,6 +25,6 @@ defmodule ScriptrWeb.SessionController do
     conn
     |> delete_session(:current_pharmacy_id)
     |> put_flash(:info, "Signed out successfully.")
-    |> redirect(to: Routes.page_path(conn, :index))
+    |> redirect(to: Routes.session_path(conn, :new))
   end
 end

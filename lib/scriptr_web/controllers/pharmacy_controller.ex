@@ -3,6 +3,23 @@ defmodule ScriptrWeb.PharmacyController do
 
   alias Scriptr.Accounts
   alias Scriptr.Accounts.Pharmacy
+  alias Scriptr.Accounts.Location
+
+  plug :check_auth when action in [:index, :new, :create, :show, :edit, :update, :delete]
+
+  def check_auth(conn, _args) do
+    if pharmacy_id = get_session(conn, :current_pharmacy_id) do
+    current_pharmacy = Accounts.get_pharmacy!(pharmacy_id)
+
+    conn
+      |> assign(:current_pharmacy, current_pharmacy)
+    else
+      conn
+      |> put_flash(:error, "You need to be signed in to access that page.")
+      |> redirect(to: Routes.session_path(conn, :new))
+      |> halt()
+    end
+  end
 
   def new(conn, _params) do
     changeset = Accounts.change_pharmacy(%Pharmacy{})
@@ -24,7 +41,8 @@ defmodule ScriptrWeb.PharmacyController do
 
   def show(conn, %{"id" => id}) do
     pharmacy = Accounts.get_pharmacy!(id)
-    render(conn, "show.html", pharmacy: pharmacy)
+    location_changeset = Accounts.change_location(conn.assigns.current_pharmacy, %Location{})
+    render(conn, "show.html", pharmacy: pharmacy, location_changeset: location_changeset)
   end
 
   def edit(conn, %{"id" => id}) do

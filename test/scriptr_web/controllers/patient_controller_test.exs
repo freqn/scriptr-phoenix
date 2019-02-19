@@ -19,29 +19,29 @@ defmodule ScriptrWeb.PatientControllerTest do
     end
   end
 
-  describe "new patient" do
-    test "renders form", %{conn: conn} do
-      conn = get(conn, Routes.patient_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Patient"
-    end
-  end
+  # describe "new patient" do
+  #   test "renders form", %{conn: conn} do
+  #     conn = get(conn, Routes.patient_path(conn, :new))
+  #     assert html_response(conn, 200) =~ "New Patient"
+  #   end
+  # end
 
-  describe "create patient" do
-    test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.patient_path(conn, :create), patient: @create_attrs)
+  # describe "create patient" do
+  #   test "redirects to show when data is valid", %{conn: conn} do
+  #     conn = post(conn, Routes.patient_path(conn, :create), patient: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.patient_path(conn, :show, id)
+  #     assert %{id: id} = redirected_params(conn)
+  #     assert redirected_to(conn) == Routes.patient_path(conn, :show, id)
 
-      conn = get(conn, Routes.patient_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Patient"
-    end
+  #     conn = get(conn, Routes.patient_path(conn, :show, id))
+  #     assert html_response(conn, 200) =~ "Show Patient"
+  #   end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.patient_path(conn, :create), patient: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Patient"
-    end
-  end
+  #   test "renders errors when data is invalid", %{conn: conn} do
+  #     conn = post(conn, Routes.patient_path(conn, :create), patient: @invalid_attrs)
+  #     assert html_response(conn, 200) =~ "New Patient"
+  #   end
+  # end
 
   describe "edit patient" do
     setup [:create_patient]

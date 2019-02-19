@@ -5,7 +5,7 @@ defmodule ScriptrWeb.PharmacyController do
   alias Scriptr.Accounts.Pharmacy
   alias Scriptr.Accounts.Location
 
-  plug :check_auth when action in [:index, :new, :create, :show, :edit, :update, :delete]
+  plug :check_auth when action in [:show, :edit, :update, :delete]
 
   def check_auth(conn, _args) do
     if pharmacy_id = get_session(conn, :current_pharmacy_id) do
@@ -34,7 +34,7 @@ defmodule ScriptrWeb.PharmacyController do
         |> put_flash(:info, "#{pharmacy.name} is now registered!")
         |> redirect(to: Routes.pharmacy_path(conn, :show, pharmacy))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
+      {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end

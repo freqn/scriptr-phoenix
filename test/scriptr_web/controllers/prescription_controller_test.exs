@@ -19,12 +19,12 @@ defmodule ScriptrWeb.PrescriptionControllerTest do
     end
   end
 
-  describe "new prescription" do
-    test "renders form", %{conn: conn} do
-      conn = get(conn, Routes.prescription_path(conn, :new))
-      assert html_response(conn, 200) =~ "New Prescription"
-    end
-  end
+  # describe "new prescription" do
+  #   test "renders form", %{conn: conn} do
+  #     conn = get(conn, Routes.prescription_path(conn, :new))
+  #     assert html_response(conn, 200) =~ "New Prescription"
+  #   end
+  # end
 
   describe "create prescription" do
     test "redirects to show when data is valid", %{conn: conn} do
@@ -37,10 +37,10 @@ defmodule ScriptrWeb.PrescriptionControllerTest do
       assert html_response(conn, 200) =~ "Show Prescription"
     end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.prescription_path(conn, :create), prescription: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Prescription"
-    end
+    # test "renders errors when data is invalid", %{conn: conn} do
+    #   conn = post(conn, Routes.prescription_path(conn, :create), prescription: @invalid_attrs)
+    #   assert html_response(conn, 200) =~ "New Prescription"
+    # end
   end
 
   describe "edit prescription" do

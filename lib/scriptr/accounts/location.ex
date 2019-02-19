@@ -17,5 +17,6 @@ defmodule Scriptr.Accounts.Location do
     location
     |> cast(attrs, [:name, :latitude, :longitude])
     |> validate_required([:name, :latitude, :longitude])
+    |> cast_assoc(:orders)
   end
 end

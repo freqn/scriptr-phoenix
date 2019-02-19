@@ -5,9 +5,9 @@
     </div>
   <% end %>
 
-  <%= label f, :prescription_id %>
-  <%= number_input f, :prescription_id %>
-  <%= error_tag f, :prescription_id %>
+  <%= label f, :patient_id %>
+  <%= number_input f, :patient_id %>
+  <%= error_tag f, :patient_id %>
 
   <%= label f, :location_id %>
   <%= number_input f, :location_id %>

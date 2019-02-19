@@ -7,7 +7,7 @@ defmodule Scriptr.Accounts.Patient do
     field :first_name, :string
     field :last_name, :string
     belongs_to :pharmacy, Scriptr.Accounts.Pharmacy
-    has_many :orders, Scriptr.Accounts.Order
+    has_one :order, Scriptr.Accounts.Order
     timestamps()
   end
 

@@ -11,19 +11,6 @@ defmodule Scriptr.Accounts do
   alias Scriptr.Accounts.Orders
 
   @doc """
-  Returns the list of pharmacies.
-
-  ## Examples
-
-      iex> list_pharmacies()
-      [%Pharmacy{}, ...]
-
-  """
-  def list_pharmacies do
-    Repo.all(Pharmacy)
-  end
-
-  @doc """
   Gets a single pharmacy.
 
   Raises `Ecto.NoResultsError` if the Pharmacy does not exist.
@@ -145,7 +132,11 @@ defmodule Scriptr.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_location!(id), do: Repo.get!(Location, id)
+  def get_location!(id) do
+    Location
+    |> Repo.get!(id)
+    |> Repo.preload(:orders)
+  end
 
   @doc """
   Creates a location.
@@ -440,7 +431,11 @@ defmodule Scriptr.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_order!(id), do: Repo.get!(Order, id)
+  def get_order!(id) do 
+    Order
+    |> Repo.get!(id)
+    |> Repo.preload(:prescription)
+  end
 
   @doc """
   Creates a order.
@@ -454,7 +449,7 @@ defmodule Scriptr.Accounts do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_order( attrs \\ %{}) do
+  def create_order(attrs \\ %{}) do
     %Order{}
     |> Order.changeset(attrs)
     |> Repo.insert()

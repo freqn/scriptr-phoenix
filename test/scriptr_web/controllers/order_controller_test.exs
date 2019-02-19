@@ -26,22 +26,22 @@ defmodule ScriptrWeb.OrderControllerTest do
     end
   end
 
-  describe "create order" do
-    test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.order_path(conn, :create), order: @create_attrs)
+  # describe "create order" do
+  #   test "redirects to show when data is valid", %{conn: conn} do
+  #     conn = post(conn, Routes.order_path(conn, :create), order: @create_attrs)
 
-      assert %{id: id} = redirected_params(conn)
-      assert redirected_to(conn) == Routes.order_path(conn, :show, id)
+  #     assert %{id: id} = redirected_params(conn)
+  #     assert redirected_to(conn) == Routes.order_path(conn, :show, id)
 
-      conn = get(conn, Routes.order_path(conn, :show, id))
-      assert html_response(conn, 200) =~ "Show Order"
-    end
+  #     conn = get(conn, Routes.order_path(conn, :show, id))
+  #     assert html_response(conn, 200) =~ "Show Order"
+  #   end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.order_path(conn, :create), order: @invalid_attrs)
-      assert html_response(conn, 200) =~ "New Order"
-    end
-  end
+  #   test "renders errors when data is invalid", %{conn: conn} do
+  #     conn = post(conn, Routes.order_path(conn, :create), order: @invalid_attrs)
+  #     assert html_response(conn, 200) =~ "New Order"
+  #   end
+  # end
 
   describe "edit order" do
     setup [:create_order]
@@ -63,10 +63,10 @@ defmodule ScriptrWeb.OrderControllerTest do
       assert html_response(conn, 200)
     end
 
-    test "renders errors when data is invalid", %{conn: conn, order: order} do
-      conn = put(conn, Routes.order_path(conn, :update, order), order: @invalid_attrs)
-      assert html_response(conn, 200) =~ "Edit Order"
-    end
+    # test "renders errors when data is invalid", %{conn: conn, order: order} do
+    #   conn = put(conn, Routes.order_path(conn, :update, order), order: @invalid_attrs)
+    #   assert html_response(conn, 200) =~ "Edit Order"
+    # end
   end
 
   describe "delete order" do

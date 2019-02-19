@@ -2,6 +2,9 @@
 <i>Lat: <%= @location.latitude %>, Long: <%= @location.longitude %></i><br>
 <hr>
 <h3>Orders:</h3>
+<%= for order <- @location.orders do %>
+  <li class="location"><strong><%= link order.id, to: Routes.order_path(@conn, :show, order) %></strong></li>
+<% end %>
 <%= link "+ New Order", to: Routes.order_path(@conn, :new) %> <br><br>
 <hr>
 

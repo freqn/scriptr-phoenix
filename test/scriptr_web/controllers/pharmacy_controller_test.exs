@@ -4,8 +4,8 @@ defmodule ScriptrWeb.PharmacyControllerTest do
   alias Scriptr.Accounts
 
   @create_attrs %{encrypted_password: "someencryptedpassword", name: "some name", username: "someusername"}
-  @update_attrs %{encrypted_password: "some updated encrypted_password", name: "some updated name", username: "some updated username"}
-  @invalid_attrs %{encrypted_password: nil, name: nil, username: nil}
+  # @update_attrs %{encrypted_password: "some updated encrypted_password", name: "some updated name", username: "some updated username"}
+  # @invalid_attrs %{encrypted_password: nil, name: nil, username: nil}
 
   def fixture(:pharmacy) do
     {:ok, pharmacy} = Accounts.create_pharmacy(@create_attrs)
@@ -67,8 +67,8 @@ defmodule ScriptrWeb.PharmacyControllerTest do
   #   end
   # end
 
-  defp create_pharmacy(_) do
-    pharmacy = fixture(:pharmacy)
-    {:ok, pharmacy: pharmacy}
-  end
+  # defp create_pharmacy(_) do
+  #   pharmacy = fixture(:pharmacy)
+  #   {:ok, pharmacy: pharmacy}
+  # end
 end

@@ -3,7 +3,8 @@ defmodule ScriptrWeb.OrderController do
 
   alias Scriptr.Accounts
   alias Scriptr.Accounts.Order
-
+  alias Scriptr.Accounts.Prescription
+  
   def index(conn, _params) do
     orders = Accounts.list_orders()
     render(conn, "index.html", orders: orders)

@@ -5,7 +5,7 @@ defmodule Scriptr.Accounts.Prescription do
 
   schema "prescriptions" do
     field :name, :string
-
+    belongs_to :order, Scriptr.Accounts.Order
     timestamps()
   end
 
